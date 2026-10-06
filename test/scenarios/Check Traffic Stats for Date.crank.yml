@@ -1,0 +1,40 @@
+scenario: Google Postmaster Traffic Stats Validation
+description: >
+  This scenario demonstrates the validation of various fields in Google Postmaster Traffic Stats for a specified domain and date.
+
+tokens:
+  test.domain: stackmoxie.com
+  test.date: 2023-12-15T00:00:00.000Z
+  test.field: domainReputation
+  test.expectation: HIGH
+  test.operator: be
+  test.field1: spfSuccessRatio
+  test.expectation1: 0.9
+  test.operator1: be greater than
+  test.date2: 2024-01-29
+  test.field2: userReportedSpamRatio
+  test.expectation2: 0.001
+  test.operator2: be less than
+
+steps:
+- step: the {{test.field}} field on google postmaster traffic stats for {{test.domain}} on {{test.date}} should {{test.operator}} {{test.expectation}}
+  data:
+    domain: {{test.domain}}
+    date: {{test.date}}
+    field: {{test.field}}
+    operator: {{test.operator}}
+    expectation: {{test.expectation}}
+- step: and the {{test.field1}} field on google postmaster traffic stats for {{test.domain}} on {{test.date}} should {{test.operator1}} {{test.expectation1}}
+  data:
+    domain: {{test.domain}}
+    date: {{test.date}}
+    field: {{test.field1}}
+    operator: {{test.operator1}}
+    expectation: {{test.expectation1}}
+- step: and the {{test.field2}} field on google postmaster traffic stats for {{test.domain}} on {{test.date2}} should {{test.operator2}} {{test.expectation2}}
+  data:
+    domain: {{test.domain}}
+    date: {{test.date2}}
+    field: {{test.field2}}
+    operator: {{test.operator2}}
+    expectation: {{test.expectation2}}
