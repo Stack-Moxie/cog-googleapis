@@ -116,7 +116,7 @@ jobs:
           command: |
             curl -s https://get.crank.run/install.sh | sh
             docker tag $IMAGE_NAME:latest $IMAGE_NAME:local-test
-            crank cog:install $IMAGE_NAME:local-test
+            crank cog:install $IMAGE_NAME:local-test --ignore-auth
             crank cog:install automatoninc/web:0.3.1
       # - run:
       #     name: Run all test scenarios
